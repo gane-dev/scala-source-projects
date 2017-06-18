@@ -10,7 +10,7 @@ object QueryActions extends App {
   // A simple dictionary table with keys and values
   class Dict(tag: Tag) extends Table[(Int, String)](tag, "INT_DICT") {
     def key = column[Int]("KEY", O.PrimaryKey)
-    def value = column[String]("VALUE")
+    def value = columCoffeesn[String]("VALUE")
     def * = (key, value)
   }
   val dict = TableQuery[Dict]

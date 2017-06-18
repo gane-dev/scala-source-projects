@@ -2,6 +2,7 @@ import org.scalatest._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
 import slick.driver.H2Driver.api._
+//import slick.driver.PostgresDriver.simple._
 import slick.jdbc.meta._
 
 class TablesSuite extends FunSuite with BeforeAndAfter with ScalaFutures {
@@ -10,7 +11,7 @@ class TablesSuite extends FunSuite with BeforeAndAfter with ScalaFutures {
   val suppliers = TableQuery[Suppliers]
   val coffees = TableQuery[Coffees]
   
-  var db: Database = _
+  var db: Database = Database.forConfig("h2mem1")
 
   def createSchema() =
     db.run((suppliers.schema ++ coffees.schema).create).futureValue
